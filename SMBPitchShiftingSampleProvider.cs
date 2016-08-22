@@ -81,7 +81,7 @@ public class SMBPitchShiftingSampleProvider : ISampleProvider
         set {
             lock (PitchLock) {
                 Pitch = value;
-                //ScaleVolume();
+                ScaleVolume(); // A Limiter would be better than linear downscaling...
             }
         }
     }
