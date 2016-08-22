@@ -23,4 +23,5 @@ WaveOutEvent wo = new WaveOutEvent
 };
 
 wo.Init(new SampleToWaveProvider16(SMB));
+
 wo.Play();
