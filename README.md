@@ -14,10 +14,12 @@ Usage:
 // Define Pitch shifting factor. (0.5f pitches one octave down, 2f would pitch one octave up)
 
 SMB = new SMBPitchShiftingSampleProvider(new AudioFileReader(OFD.FileName), 4096, 8L, 0.5f);
+
 WaveOutEvent wo = new WaveOutEvent
 {
-  DesiredLatency = 93,
+  DesiredLatency = 150,
   NumberOfBuffers = 3
 };
+
 wo.Init(new SampleToWaveProvider16(SMB));
 wo.Play();
