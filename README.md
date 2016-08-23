@@ -2,7 +2,7 @@
 
 A realtime C# audio pitch shifter based on S. M. Bernsees phase vocoder that implements an NAudio SampleProvider.
 
-Test application:
+Test application screenshot:
 
 
 ![Example Screenshot](Example.bmp)
