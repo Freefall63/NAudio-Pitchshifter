@@ -50,7 +50,7 @@ namespace NAudio_Pitchshifter_Test
                 SMB = new SMBPitchShiftingSampleProvider(new AudioFileReader(OFD.FileName), 4096, 8L, Pitch);
                 WaveOutEvent wo = new WaveOutEvent
                 {
-                    DesiredLatency = 93,
+                    DesiredLatency = 150,
                     NumberOfBuffers = 3
                 };
                 wo.Init(new SampleToWaveProvider16(SMB));
