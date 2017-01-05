@@ -1,6 +1,6 @@
 # NAudio-Pitchshifter
 
-A realtime C# audio pitch shifter based on S. M. Bernsees phase vocoder that implements an NAudio SampleProvider.
+A realtime C# audio pitch shifter based on S. M. Bernsees phase vocoder that implements an NAudio ISampleProvider.
 
 Or in simple words: this lets you change the pitch of audio (e.g. in realtime playback using the NAudio library).
 
@@ -22,7 +22,7 @@ Usage:
 // Choose FFTSize and Osamp. (recommended are 4096 and 4)
 // Define Pitch shifting factor. (0.5f pitches one octave down, 2f would pitch one octave up)
 
-SMBPitchShiftingSampleProvider SMB = new SMBPitchShiftingSampleProvider(new AudioFileReader(@"C:\Test.wav"), 4096, 8L, 0.5f);
+SMBPitchShiftingSampleProvider SMB = new SMBPitchShiftingSampleProvider(new AudioFileReader(@"C:\Test.wav"), 4096, 4L, 0.5f);
 
 WaveOutEvent wo = new WaveOutEvent
 {
