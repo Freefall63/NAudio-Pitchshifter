@@ -56,13 +56,13 @@ public class SMBPitchShiftingSampleProvider : ISampleProvider
         if (WFormat.Channels == 1) {
             float[] Mono = new float[SampRead];
             int index = 0;
-            for (int sample = offset; sample <= SampRead - 1; sample++) {
+            for (int sample = offset; sample <= SampRead + offset - 1; sample++) {
                 Mono[index] = buffer[sample];
                 index += 1;
             }
             ShifterLeft.PitchShift(Pitch, SampRead, _FFTSize, _osamp, WFormat.SampleRate, Mono);
             index = 0;
-            for (int sample = offset; sample <= SampRead - 1; sample++) {
+            for (int sample = offset; sample <= SampRead + offset - 1; sample++) {
                 buffer[sample] = Limiter(Mono[index]);
                 index += 1;
             }
@@ -71,7 +71,7 @@ public class SMBPitchShiftingSampleProvider : ISampleProvider
             float[] Left = new float[(SampRead >> 1)];
             float[] Right = new float[(SampRead >> 1)];
             int index = 0;
-            for (int sample = offset; sample <= SampRead - 1; sample += 2) {
+            for (int sample = offset; sample <= SampRead + offset - 1; sample += 2) {
                 Left[index] = buffer[sample];
                 Right[index] = buffer[sample + 1];
                 index += 1;
@@ -79,7 +79,7 @@ public class SMBPitchShiftingSampleProvider : ISampleProvider
             ShifterLeft.PitchShift(Pitch, SampRead >> 1, _FFTSize, _osamp, WFormat.SampleRate, Left);
             ShifterRight.PitchShift(Pitch, SampRead >> 1, _FFTSize, _osamp, WFormat.SampleRate, Right);
             index = 0;
-            for (int sample = offset; sample <= SampRead - 1; sample += 2) {
+            for (int sample = offset; sample <= SampRead + offset - 1; sample += 2) {
                 buffer[sample] = Limiter(Left[index]);
                 buffer[sample + 1] = Limiter(Right[index]);
                 index += 1;
