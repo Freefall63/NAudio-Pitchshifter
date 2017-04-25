@@ -21,6 +21,7 @@ Imports NAudio.Wave
 
 // Choose FFTSize and Osamp. (recommended are 4096 and 4)
 // Define Pitch shifting factor. (0.5f pitches one octave down, 2f would pitch one octave up)
+
 Sub Test()
 
   SMBPitchShiftingSampleProvider SMB = new SMBPitchShiftingSampleProvider(new AudioFileReader(@"C:\Test.wav"), 4096, 4L, 0.5f);
