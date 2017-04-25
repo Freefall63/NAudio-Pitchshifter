@@ -17,19 +17,20 @@ Test application screenshot:
 Usage:
 
 
-
+Imports NAudio.Wave
 
 // Choose FFTSize and Osamp. (recommended are 4096 and 4)
 // Define Pitch shifting factor. (0.5f pitches one octave down, 2f would pitch one octave up)
+Sub Test()
+  SMBPitchShiftingSampleProvider SMB = new SMBPitchShiftingSampleProvider(new AudioFileReader(@"C:\Test.wav"), 4096, 4L, 0.5f);
 
-SMBPitchShiftingSampleProvider SMB = new SMBPitchShiftingSampleProvider(new AudioFileReader(@"C:\Test.wav"), 4096, 4L, 0.5f);
+  WaveOutEvent wo = new WaveOutEvent
+  {
+    DesiredLatency = 150,
+    NumberOfBuffers = 3
+  };
 
-WaveOutEvent wo = new WaveOutEvent
-{
-  DesiredLatency = 150,
-  NumberOfBuffers = 3
-};
+  wo.Init(new SampleToWaveProvider16(SMB));
 
-wo.Init(new SampleToWaveProvider16(SMB));
-
-wo.Play();
+  wo.Play();
+End Sub
